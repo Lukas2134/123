@@ -1,0 +1,123 @@
+package javaapplication7;
+import java.util.Scanner;
+
+public class JavaApplication7 {
+   
+    public static void main(String[] args) {
+        boolean [] locker = new boolean [512];
+        
+        int n=0;
+        System.out.println( "VITAJTE V SPRAVE SKRINIEK" );
+        System.out.println( "Zadajte pocet skriniek" );
+        Scanner scan = new Scanner(System.in);
+        n=scan.nextInt();
+        System.out.println( "zadany pocet skriniek:"+ n );
+        int[] array = new int[n];
+
+        
+for (int j = 0; j < array.length; j+=n){
+    if (locker[j] == false)
+	locker[j] = true;
+        
+for (int i =1; i < array.length; i++) { 
+  array[i] = i;
+
+}
+for (int i = 1; i <= array.length; i++){
+			if (locker[i]==true)//ak otvorene
+				System.out.println(i + " " + "open"); //otvorene výpis
+			else//ak zatvorene
+				System.out.println(i + " " + "closed");//zatvorene vypis
+		}		
+ 
+ Scanner scanner = new Scanner(System.in);
+ String pokracovat = "y";
+        while (pokracovat.equals("y")){
+ System.out.println("Vyberte číslo operácie");
+        System.out.println("1 - vypise pocet skrinie");
+        System.out.println("2 - prida skrinku(zatvorenu)");
+        System.out.println("3 - odstrani skrinku");
+        System.out.println("4 - vypise otvorene");
+        System.out.println("5 - vypise zatvorene");
+        System.out.println("6 - otvorí zatvorenú");
+        System.out.println("7 - zatvori otvorenú");
+        System.out.println("8 - vypíse stav vsetkych skriniek");
+        
+ int volba = Integer.parseInt(scanner.nextLine());
+    
+    switch (volba)
+    {
+        case 1:
+        System.out.println( "zadany pocet skriniek je:"+ n );
+        break;
+        case 2:
+        n=n+1;
+          System.out.println( "Skrinka uspesne pridana." );
+        break;
+        case 3:
+        n=n-1;
+          System.out.println( "Skrinka uspesne odstranena." );
+        break;
+        case 4:
+          System.out.println( "otvorene su skrinky s cislami" );  
+            for (int i = 0; i < n; i++){
+        if (locker[i]==true)//ak otvorene
+				System.out.println(i + " " + "open"); //otvorene výpis
+            }
+        break;
+        case 5:
+          System.out.println( "zatvorene su skrinky s cislami" );
+        for (int i = 0; i < n; i++){
+        if (locker[i]==false)//ak otvorene
+				System.out.println(i + " " + "closed");//zatvorene vypis
+            }
+        break;
+        case 6:
+        int a=0;
+        System.out.println( "Ktorú skrinku si prajete otvorit?" );
+        a=scan.nextInt();
+        if (locker[a] == false)
+        {
+	    locker[a] = true;
+            System.out.println(a + " " + "je teraz otvorena"); //otvorenu výpise
+        }
+        else
+            System.out.println("Zadaná skrinka je uz otvorená.");
+        break;
+        case 7:
+        int e=0;
+        System.out.println( "Ktorú skrinku si prajete zatvorit?" );
+        e=scan.nextInt();
+        if (locker[e] == true)
+        {
+	    locker[e] = false;
+            System.out.println(e+ " " + "je teraz zatvorena"); //zatvorenu výpise
+            
+        }
+        else
+            System.out.println("Zadaná skrinka je uz zatvorena.");
+        break;
+        case 8:
+        for (int i = 1; i <= n; i++){
+			if (locker[i]==true)//ak otvorene
+				System.out.println(i + " " + "open"); //otvorene výpis
+			else//ak zatvorene
+				System.out.println(i + " " + "closed");//zatvorene vypis
+		}	
+        break;
+    }
+        if ((volba > 0) && (volba < 9))
+    {
+        System.out.println("Dalsia moznost? [y/n]");
+        pokracovat = scanner.nextLine();
+    }
+         else
+    {
+        System.out.println("Zadaná voľba neexistuje");
+        System.out.println("Dalsia moznost? [y/n]");
+        pokracovat = scanner.nextLine();
+    }
+}
+}
+}
+}
